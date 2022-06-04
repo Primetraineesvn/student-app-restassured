@@ -122,18 +122,22 @@ public class SearchJsonPathExample {
     // 10) Get the manufacturer of products whose name Start = Ene
     @Test
     public void test010() {
+//        List<?> manuList =response.extract().path("data.findAll{it.name==~/Ene.*/}.manufacturer");
+        List<?> manuList =response.extract().path("data.findAll{it.name.startsWith('Ene')}.manufacturer");
 
         System.out.println("------------------StartingTest---------------------------");
-        System.out.println("The manufacturer of products whose name Start = Ene are: ");
+        System.out.println("The manufacturer of products whose name Start = Ene are: " + manuList);
         System.out.println("------------------End of Test---------------------------");
     }
 
-    // 11) Get the price of products whose name end with = Vehicles
+    // 11) Get the price of products whose name end with = Black
     @Test
     public void test011() {
+//        List<?> priceList =response.extract().path("data.findAll{it.name==~/.*Black/}.price");
+        List<?> priceList =response.extract().path("data.findAll{it.name.endsWith('Black')}.price");
 
         System.out.println("------------------StartingTest---------------------------");
-        System.out.println("The prices of products whose name end with = Vehicles are: ");
+        System.out.println("The prices of products whose name end with = Vehicles are: " +priceList);
         System.out.println("------------------End of Test---------------------------");
     }
 
@@ -141,8 +145,12 @@ public class SearchJsonPathExample {
     @Test
     public void test012() {
 
+        List<HashMap<String, ?>> productListMap = response.extract().path("data.findAll{it.name=='Energizer - N Cell E90 Batteries (2-Pack)'}");
+        HashMap<String, ?> productMap = productListMap.get(0);
+        int id = (Integer) productMap.get("id");
+
         System.out.println("------------------StartingTest---------------------------");
-        System.out.println("The id of product whose name 'Energizer - N Cell E90 Batteries (2-Pack)' is : ");
+        System.out.println("The id of product whose name 'Energizer - N Cell E90 Batteries (2-Pack)' is : " +id);
         System.out.println("------------------End of Test---------------------------");
     }
 

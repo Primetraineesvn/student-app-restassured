@@ -11,6 +11,17 @@
             "Statistics"
         ]
     },
+     {
+            "id": 1,
+            "firstName": "Vernon",
+            "lastName": "Harper",
+            "email": "primetesting@gmail.com",
+            "programme": "Financial Analysis",
+            "courses": [
+                "Accounting",
+                "Statistics"
+            ]
+        },
     {
         "id": 3,
         "firstName": "Reece",
